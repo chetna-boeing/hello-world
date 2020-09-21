@@ -1,0 +1,61 @@
+
+VP 
+ SD1 SD2  SD3
+ Dir1,Dir2
+ M1, M2, M3
+ D1,D2,D3
+
+
+id , hierarchylevel , parentId
+D1    5	                m1         
+M1    4                 Dire1
+Dir1  3                 SD1
+SD1   2                  VP          
+VP    1	                  -- 
+
+string s1 = dir1 , 
+select hl, parentid where id = :S1
+if (hl >1)
+{
+	s1=parentId;
+}
+
+
+public string findParent(String input) dir1
+{
+	boolean exitLoop = false;
+	String InputString = input;
+	String returnString = '';
+	
+	//List<metadata> mList = [select HL, ParentID from metadat where id=:InputString];
+	while(!exitLoop)
+	{
+		for(metadata m : [select HL, ParentID from metadat where id=:InputString])
+		{	if (m.HL > 1)
+			{
+				InputString = m.ParentId;
+			}
+			else
+			{
+				returnString = ParentID;
+				exitLoop = true;
+			}
+			
+		}
+	}
+}
+
+
+
+ <div class="slds-box slds-align_absolute-center" iconName="action:close" padding="around-medium"> Embargo Account </div>
+ slds-p-right_medium
+ 
+ •	Limitations of using Account – Contact relationship instead of Contact Roles object?
+•	How to limit creation/editing/deletion of Regional Team and Sales Team to specific users since Account-Contact Relationship is available for all users?
+•	How to ensure all the necessary fields are populated for Sales Team during creation and doesn’t conflict a general user associating a Customer Contact to that account?
+•	How to distinguish Regional Team and Sales Team from Customer Contact?
+•	How to prevent users from creating Regional Team directly in the Account-Contact Relationship object instead of it being automated (do we still leverage Sales Region-Contact relationship)?
+•	Any other requirements not yet covered
+
+ 
+ 
